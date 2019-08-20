@@ -1,14 +1,12 @@
 const express = require("express");
 const app = express();
+const morgan = require("morgan");
 
-app.use(function(req, res, next) {
-  console.log(`${req.method} ${req.originalUrl}`);
-  next();
-});
+app.use(morgan("tiny"));
 
 app.use(express.static("public"));
 
-const PORT = process.env.PORT || 5050;
+const PORT = process.env.PORT || 5060;
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
